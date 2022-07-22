@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One_Book</title>
+</head>
+<body>
+    <h1>{{book.title}}</h1>
+    <table>
+        <thead>
+            <th>Favorited by:</th>
+        </thead>
+        <tbody>
+            {% for author in book.authors %}
+            <tr>
+                <td>{{author.name}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h1>Add Book's Favorite</h1>
+    <form action="/books/{{book.id}}/fav" method="POST">
+        <label for="author_id">Book:</label>
+        <select name="author_id">
+            {% for author in authors %}
+            <option value='{{author.id}}'>{{author.name}}</option>
+            {% endfor %}
+        </select>
+        <button>Add</button>
+    </form>
+    <a href="/">Home</a>
+</body>
+</html>

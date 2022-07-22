@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>read_user</title>
+
+</head>
+<body>
+    <h1>All users</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for one_user in users %}
+            <tr>
+                <td>{{ one_user.id }}</td>
+                <td>{{ one_user.first_name}} {{ one_user.last_name}}</td>
+                <td>{{ one_user.email }}</td>
+                <td>{{ one_user.created_at.strftime("%b %d %y") }}</td>
+                <td>
+                    <a href="/read_one/{{one_user.id}}">Show</a>
+                    <a href="/edit_page/{{one_user.id}}">Edit</a>
+                    <a href="/delete/{{one_user.id}}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <a href="/create"> Add a New User</a>
+    </table>
+</body>
+</html>
